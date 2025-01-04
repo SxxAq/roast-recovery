@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Roast } from '@/types/roast'
+import { motion } from "framer-motion";
+import { Roast } from "@/types/roast";
 
 interface RoastResponseProps {
-  roast: Roast
+  roast: Roast;
 }
 
 export default function RoastResponse({ roast }: RoastResponseProps) {
@@ -16,11 +16,19 @@ export default function RoastResponse({ roast }: RoastResponseProps) {
       className="bg-gray-100 rounded-lg p-4 shadow"
     >
       <p className="text-gray-700 mb-2">
-        <strong>Roast:</strong> {roast.critique}
+        <strong>Incoming Roast:</strong> {roast.critique}
       </p>
-      <p className="text-blue-600 font-semibold">
-        <strong>Comeback:</strong> {roast.response}
+      <p className="text-red-600 font-bold text-lg mt-4">
+        <strong>Savage Comeback:</strong> {roast.response}
       </p>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.5, type: "spring", stiffness: 500, damping: 10 }}
+        className="mt-2 text-yellow-500 text-sm"
+      >
+        🔥 Roast Level: Thermonuclear 🔥
+      </motion.div>
     </motion.div>
-  )
+  );
 }
