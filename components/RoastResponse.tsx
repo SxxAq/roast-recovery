@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Roast } from "@/types/roast";
+import { MessageCircle, Flame } from "lucide-react";
 
 interface RoastResponseProps {
   roast: Roast;
@@ -9,26 +9,24 @@ interface RoastResponseProps {
 
 export default function RoastResponse({ roast }: RoastResponseProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-gray-100 rounded-lg p-4 shadow"
-    >
-      <p className="text-gray-700 mb-2">
-        <strong>Incoming Roast:</strong> {roast.critique}
-      </p>
-      <p className="text-red-600 font-bold text-lg mt-4">
-        <strong>Savage Comeback:</strong> {roast.response}
-      </p>
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.5, type: "spring", stiffness: 500, damping: 10 }}
-        className="mt-2 text-yellow-500 text-sm"
-      >
-        🔥 Roast Level: Thermonuclear 🔥
-      </motion.div>
+    <motion.div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700">
+      <div className="space-y-4">
+        <div className="flex items-start gap-3">
+          <MessageCircle className="w-5 h-5 text-gray-400 mt-1" />
+          <div>
+            <p className="text-gray-400 font-medium">Incoming Roast</p>
+            <p className="text-white text-lg mt-1">{roast.critique}</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3">
+          <Flame className="w-5 h-5 text-red-400 mt-1" />
+          <div>
+            <p className="text-red-400 font-medium">Savage Comeback</p>
+            <p className="text-white text-lg mt-1">{roast.response}</p>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
